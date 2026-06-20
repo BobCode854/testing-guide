@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing Mastery Hub — Complete QA Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Visual answer components (shared with questions.html) ── */
+    .ans-hero{background:linear-gradient(135deg,#6c63ff18,#a855f718);border-left:4px solid #6c63ff;border-radius:0 10px 10px 0;padding:.7rem 1.1rem;font-weight:700;font-size:1rem;color:#2d2b5e;margin-bottom:1rem;}
+    .ans-list{list-style:none;padding:0;margin:.5rem 0 1rem;}
+    .ans-list li{display:flex;align-items:flex-start;gap:.5rem;padding:.38rem .65rem;margin-bottom:.28rem;border-radius:8px;font-size:.93rem;background:#f7f8fc;border-left:3px solid #6c63ff;}
+    .ans-list.green li{border-left-color:#059669;background:#f0fdf4;}
+    .ans-list.amber li{border-left-color:#d97706;background:#fffbeb;}
+    .ans-list.red li{border-left-color:#dc2626;background:#fff5f5;}
+    .ans-list.blue li{border-left-color:#2563eb;background:#eff6ff;}
+    .ans-list.purple li{border-left-color:#7c3aed;background:#f5f3ff;}
+    .ans-label{display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:800;text-transform:uppercase;padding:.18rem .6rem;border-radius:20px;margin-bottom:.4rem;}
+    .ans-label.def{background:#eef2ff;color:#4f46e5;}
+    .ans-label.key{background:#f0fdf4;color:#059669;}
+    .ans-label.ex{background:#fffbeb;color:#d97706;}
+    .ans-label.tip{background:#fff5f5;color:#dc2626;}
+    .hl{font-weight:700;padding:.05rem .38rem;border-radius:5px;font-size:.88em;}
+    .hl.green{background:#d1fae5;color:#065f46;}
+    .hl.blue{background:#dbeafe;color:#1e40af;}
+    .hl.purple{background:#ede9fe;color:#5b21b6;}
+    .hl.amber{background:#fef3c7;color:#92400e;}
+    .hl.red{background:#fee2e2;color:#991b1b;}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.6rem 0 1rem;}
+    .compare-card{border-radius:10px;padding:.75rem 1rem;}
+    .compare-card.green{background:#f0fdf4;border:1.5px solid #6ee7b7;}
+    .compare-card.blue{background:#eff6ff;border:1.5px solid #93c5fd;}
+    .compare-card.amber{background:#fffbeb;border:1.5px solid #fcd34d;}
+    .compare-card.red{background:#fff5f5;border:1.5px solid #fca5a5;}
+    .icon-row{display:flex;flex-wrap:wrap;gap:.7rem;margin:.6rem 0 1rem;}
+    .icon-chip{display:flex;align-items:center;gap:.4rem;background:#f7f8fc;border:1px solid #e2e5f0;border-radius:10px;padding:.35rem .75rem;font-size:.88rem;font-weight:600;}
+    .icon-chip.purple{background:#f5f3ff;border-color:#c4b5fd;color:#5b21b6;}
+    .icon-chip.green{background:#f0fdf4;border-color:#6ee7b7;color:#065f46;}
+    .icon-chip.blue{background:#eff6ff;border-color:#93c5fd;color:#1e40af;}
+    .icon-chip.amber{background:#fffbeb;border-color:#fcd34d;color:#92400e;}
+    .icon-chip.red{background:#fff5f5;border-color:#fca5a5;color:#991b1b;}
+    @media(max-width:600px){.compare-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ============================== NAVBAR ============================== -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-main d-flex w-100 align-items-center justify-content-between">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-badge">QA</span> Testing Mastery Hub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-grow-0" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Overview</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="questions.html">Interview Q&amp;A</a></li>
+          <li class="nav-item"><a class="nav-link" href="coding.html">Coding</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <h1>Testing Mastery Hub</h1>
+    <p class="lead">Everything you need to master Software Testing — concepts, tools, interview questions, and coding challenges.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap position-relative" style="z-index:2;">
+      <a href="questions.html" class="btn btn-light btn-lg fw-bold px-4">Interview Q&amp;A</a>
+      <a href="coding.html" class="btn btn-outline-light btn-lg fw-bold px-4">Coding Challenges</a>
+    </div>
+  </header>
+
+  <!-- ============================== STATS BAR ============================== -->
+  <div class="stats-bar">
+    <div class="stat-card"><div class="stat-num">200+</div><div class="stat-label">Interview Questions</div></div>
+    <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">Scenario Questions</div></div>
+    <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Coding Challenges</div></div>
+    <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Tools Covered</div></div>
+  </div>
+
+  <div class="container-main">
+
+    <!-- TOC PILLS -->
+    <div class="toc-pills">
+      <a href="#what-is-testing">What Is Testing</a>
+      <a href="#types-of-testing">Types of Testing</a>
+      <a href="#automation">Automation</a>
+      <a href="#tosca">TOSCA</a>
+      <a href="#testng">TestNG</a>
+      <a href="#selenium">Selenium</a>
+    </div>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION 1: WHAT IS SOFTWARE TESTING?                                   -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="what-is-testing">
+      <h2 class="section-heading">1. What Is Software Testing?</h2>
+      <p class="section-sub">Foundations: definitions, history, the testing process, and core concepts every QA engineer must know.</p>
+
+      <div class="card-light">
+        <p class="ans-hero"><i class="bi bi-patch-check-fill me-2"></i>Software Testing = systematically executing software to <span class="hl purple">find defects</span>, verify requirements, and ensure the product does what it should — and nothing it shouldn't.</p>
+
+        <div class="compare-grid">
+          <div class="compare-card blue">
+            <span class="ans-label def"><i class="bi bi-question-circle"></i> Two Core Questions</span>
+            <ul class="ans-list blue mt-2">
+              <li><span class="icon">✅</span> "Does the software <strong>do</strong> what it is supposed to do?"</li>
+              <li><span class="icon">🚫</span> "Does it <strong>avoid</strong> doing what it should not do?"</li>
+            </ul>
+          </div>
+          <div class="compare-card purple" style="background:#f5f3ff;border:1.5px solid #c4b5fd;">
+            <span class="ans-label def"><i class="bi bi-clock-history"></i> Evolution</span>
+            <ul class="ans-list purple mt-2">
+              <li><span class="icon">🏛️</span> Old: afterthought — final gate before release</li>
+              <li><span class="icon">🔁</span> Today: continuous, integral part of SDLC</li>
+              <li><span class="icon">⬅️</span> Shift-left: test early where fixes are cheapest</li>
+            </ul>
+          </div>
+        </div>
+
+        <span class="ans-label key"><i class="bi bi-funnel"></i> Key Distinctions</span>
+        <ul class="ans-list blue">
+          <li><span class="icon">🔍</span> <strong>Testing</strong> — <em>finds</em> defects; observes behavior, reports discrepancies; done by QA</li>
+          <li><span class="icon">🔧</span> <strong>Debugging</strong> — <em>fixes</em> defects; locates root cause in code; done by developers</li>
+          <li><span class="icon">📐</span> <strong>Verification</strong> — "Are we building the product <em>right</em>?" — reviews, inspections, static analysis</li>
+          <li><span class="icon">🎯</span> <strong>Validation</strong> — "Are we building the <em>right</em> product?" — functional testing, UAT, real user needs</li>
+        </ul>
+      </div>
+
+      <h3 class="sub-heading">Testing vs Debugging</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Aspect</th><th>Testing</th><th>Debugging</th></tr></thead>
+        <tbody>
+          <tr><td>Goal</td><td>Find defects / verify behavior</td><td>Locate and fix the root cause</td></tr>
+          <tr><td>Performed by</td><td>QA Engineers / Testers</td><td>Developers</td></tr>
+          <tr><td>When</td><td>Throughout the SDLC</td><td>After a defect is found</td></tr>
+          <tr><td>Input</td><td>Requirements, test cases</td><td>Failing test, stack trace, logs</td></tr>
+          <tr><td>Output</td><td>Defect report, pass/fail status</td><td>Code fix</td></tr>
+          <tr><td>Question answered</td><td>What is wrong and where?</td><td>Why is it wrong?</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Verification vs Validation</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Aspect</th><th>Verification</th><th>Validation</th></tr></thead>
+        <tbody>
+          <tr><td>Question</td><td>"Are we building the product right?"</td><td>"Are we building the right product?"</td></tr>
+          <tr><td>Focus</td><td>Process &amp; specifications</td><td>Actual user needs</td></tr>
+          <tr><td>Techniques</td><td>Reviews, walkthroughs, inspections, static analysis</td><td>Functional testing, system testing, UAT</td></tr>
+          <tr><td>Example</td><td>Login form matches the design document</td><td>Real users can actually log in successfully</td></tr>
+          <tr><td>Type</td><td>Static (no execution)</td><td>Dynamic (executes code)</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">The Cost of Late Defect Detection</h3>
+      <p class="ans-hero"><i class="bi bi-graph-up-arrow me-2"></i>A production defect can cost <span class="hl red">100x more</span> than a requirements-phase fix — this is the core argument for <span class="hl green">shift-left testing</span>.</p>
+      <table class="table-light-custom">
+        <thead><tr><th>Phase Defect Found</th><th>Relative Cost to Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Requirements</td><td>1x</td></tr>
+          <tr><td>Design</td><td>3x – 6x</td></tr>
+          <tr><td>Coding / Development</td><td>10x</td></tr>
+          <tr><td>Testing / QA</td><td>15x – 40x</td></tr>
+          <tr><td>Production / Release</td><td>40x – 100x+</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-panel tip">
+        <div class="panel-title">Key Insight</div>
+        The earlier a defect is detected, the cheaper it is to fix. A requirements-level fix is a sentence edit; a production-level fix may involve a hotfix, regression testing, customer communication, and reputational cost.
+      </div>
+
+      <h3 class="sub-heading">Software Testing Life Cycle (STLC) — 6 Phases</h3>
+      <div class="card-grid">
+        <div class="type-card"><h5>1. Requirements Analysis</h5><p>QA studies requirements to identify what is testable, raises clarifications, and defines testing scope and feasibility (manual vs automation).</p></div>
+        <div class="type-card"><h5>2. Test Planning</h5><p>The Test Lead defines strategy, effort estimation, resource planning, tools, schedule, and the entry/exit criteria for the testing effort.</p></div>
+        <div class="type-card"><h5>3. Test Case Design</h5><p>Detailed test cases and test scripts are written, along with test data preparation and requirement-to-test traceability mapping.</p></div>
+        <div class="type-card"><h5>4. Test Environment Setup</h5><p>The hardware, software, network, and test data needed to execute tests are configured. A smoke test confirms environment readiness.</p></div>
+        <div class="type-card"><h5>5. Test Execution</h5><p>Test cases are executed, actual vs expected results are compared, defects are logged and tracked, and re-testing/regression is performed.</p></div>
+        <div class="type-card"><h5>6. Test Closure</h5><p>Test completion criteria are evaluated, metrics and a test summary report are produced, and lessons learned are documented for the future.</p></div>
+      </div>
+
+      <h3 class="sub-heading">The Testing Pyramid</h3>
+      <p class="ans-hero"><i class="bi bi-triangle me-2"></i>Many fast unit tests at the base → fewer integration → few slow E2E at the top. Invert = <span class="hl red">ice cream cone anti-pattern</span>.</p>
+      <div class="code-block">        /\
+       /E2E\         <span class="cm">&larr; few, slow, expensive</span>
+      /------\
+     /Integr. \      <span class="cm">&larr; some</span>
+    /----------\
+   /  Unit Tests \   <span class="cm">&larr; many, fast, cheap</span>
+  /--------------\</div>
+
+      <h3 class="sub-heading">A Simple Unit Test (JUnit 5)</h3>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// JUnit 5 — simplest unit test</span>
+<span class="kw">import</span> org.junit.jupiter.api.<span class="cl">Test</span>;
+<span class="kw">import static</span> org.junit.jupiter.api.<span class="cl">Assertions</span>.*;
+
+<span class="kw">class</span> <span class="cl">CalculatorTest</span> {
+    <span class="kw">private final</span> <span class="cl">Calculator</span> sut = <span class="kw">new</span> <span class="cl">Calculator</span>();
+
+    <span class="ann">@Test</span>
+    <span class="kw">void</span> <span class="fn">add_TwoPositiveNumbers_ReturnsSum</span>() {
+        <span class="kw">int</span> result = sut.<span class="fn">add</span>(<span class="num">3</span>, <span class="num">5</span>);
+        <span class="fn">assertEquals</span>(<span class="num">8</span>, result, <span class="st">"3 + 5 should equal 8"</span>);
+    }
+
+    <span class="ann">@Test</span>
+    <span class="kw">void</span> <span class="fn">divide_ByZero_ThrowsArithmeticException</span>() {
+        <span class="fn">assertThrows</span>(<span class="cl">ArithmeticException</span>.<span class="kw">class</span>,
+            () -> sut.<span class="fn">divide</span>(<span class="num">10</span>, <span class="num">0</span>));
+    }
+}</div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION 2: TYPES OF TESTING                                            -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="types-of-testing">
+      <h2 class="section-heading">2. Types of Testing</h2>
+      <p class="section-sub">Testing is grouped into Functional, Non-Functional, and Structural categories — each answering a different quality question.</p>
+
+      <h3 class="sub-heading">Functional Testing</h3>
+      <div class="card-grid">
+        <div class="type-card">
+          <h5>🔬 Unit Testing</h5>
+          <p>Tests the smallest isolated unit of code (a method or class) in isolation from the rest of the system. Catches logic errors at the source.</p>
+          <div class="type-meta"><strong>When:</strong> Development phase<br><strong>Example:</strong> Testing a <code>login()</code> method returns <code>true</code> for valid credentials.</div>
+        </div>
+        <div class="type-card">
+          <h5>🔗 Integration Testing</h5>
+          <p>Tests that two or more modules work together correctly. Verifies the interfaces and data flow between components.</p>
+          <div class="type-meta"><strong>When:</strong> After unit testing<br><strong>Example:</strong> Testing <code>UserService</code> + Database layer together.</div>
+        </div>
+        <div class="type-card">
+          <h5>🖥️ System Testing</h5>
+          <p>Tests the complete, integrated system end-to-end against the requirements. Validates the full application behaves as a whole.</p>
+          <div class="type-meta"><strong>When:</strong> After integration<br><strong>Example:</strong> Testing the entire checkout flow.</div>
+        </div>
+        <div class="type-card">
+          <h5>👥 UAT</h5>
+          <p>User Acceptance Testing: business stakeholders validate the software against real-world business requirements before go-live.</p>
+          <div class="type-meta"><strong>When:</strong> Pre-release<br><strong>Example:</strong> Client verifies invoice generation is correct.</div>
+        </div>
+        <div class="type-card">
+          <h5>💨 Smoke Testing</h5>
+          <p>A quick, broad sanity check after a new build to confirm critical paths work. If smoke fails, the build is rejected.</p>
+          <div class="type-meta"><strong>When:</strong> Every build<br><strong>Example:</strong> Can you log in and navigate the app?</div>
+        </div>
+        <div class="type-card">
+          <h5>🎯 Sanity Testing</h5>
+          <p>A narrow, deep check of a specific area after a minor fix or change. Confirms the change works without full regression.</p>
+          <div class="type-meta"><strong>When:</strong> After a minor patch<br><strong>Example:</strong> Verify only the bug-fixed feature behaves.</div>
+        </div>
+        <div class="type-card">
+          <h5>🔄 Regression Testing</h5>
+          <p>Re-runs existing tests to ensure that new code changes have not broken previously working functionality.</p>
+          <div class="type-meta"><strong>When:</strong> After any change<br><strong>Example:</strong> Full regression suite run after a sprint.</div>
+        </div>
+        <div class="type-card">
+          <h5>✅ Re-testing</h5>
+          <p>Verifies that a specific, previously-failing defect has actually been fixed. Uses the same data and steps that caused the bug.</p>
+          <div class="type-meta"><strong>When:</strong> After dev fixes a defect<br><strong>Example:</strong> Bug DEF-123 no longer reproduces.</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Non-Functional Testing</h3>
+      <div class="card-grid">
+        <div class="type-card">
+          <h5>⚡ Performance Testing</h5>
+          <p>Measures responsiveness, throughput, and resource usage under a given workload. The umbrella for load and stress testing.</p>
+          <div class="type-meta"><strong>Example:</strong> API responds in under 200ms.</div>
+        </div>
+        <div class="type-card">
+          <h5>📈 Load Testing</h5>
+          <p>Evaluates system behavior under expected, realistic user load to confirm it meets performance targets.</p>
+          <div class="type-meta"><strong>Example:</strong> 1,000 users hitting the app simultaneously.</div>
+        </div>
+        <div class="type-card">
+          <h5>💥 Stress Testing</h5>
+          <p>Pushes the system beyond normal capacity to find its breaking point and how it recovers from failure.</p>
+          <div class="type-meta"><strong>Example:</strong> 10,000 concurrent users to find the breaking point.</div>
+        </div>
+        <div class="type-card">
+          <h5>🔒 Security Testing</h5>
+          <p>Identifies vulnerabilities, threats, and risks, and verifies data protection and access controls.</p>
+          <div class="type-meta"><strong>Example:</strong> SQL injection, XSS attacks, broken auth.</div>
+        </div>
+        <div class="type-card">
+          <h5>🎨 Usability Testing</h5>
+          <p>Assesses how intuitive and user-friendly the application is for real end users completing real tasks.</p>
+          <div class="type-meta"><strong>Example:</strong> Can new users complete checkout without help?</div>
+        </div>
+        <div class="type-card">
+          <h5>🌐 Compatibility Testing</h5>
+          <p>Verifies the app works correctly across different browsers, operating systems, devices, and resolutions.</p>
+          <div class="type-meta"><strong>Example:</strong> Chrome / Firefox / Safari / IE11.</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Structural (Box) Testing</h3>
+      <div class="card-grid">
+        <div class="type-card">
+          <h5>⬜ White Box Testing</h5>
+          <p>Tester has full knowledge of the internal code and structure. Focuses on logic paths and code coverage.</p>
+          <div class="type-meta"><strong>Techniques:</strong> Statement coverage, branch coverage, path coverage.</div>
+        </div>
+        <div class="type-card">
+          <h5>⬛ Black Box Testing</h5>
+          <p>Tester has no knowledge of internal code; tests only against inputs and expected outputs.</p>
+          <div class="type-meta"><strong>Techniques:</strong> BVA, Equivalence Partitioning, Decision Tables.</div>
+        </div>
+        <div class="type-card">
+          <h5>🔳 Grey Box Testing</h5>
+          <p>Tester has partial knowledge of internals — combines black box behavior with structural insight.</p>
+          <div class="type-meta"><strong>Best for:</strong> Integration testing, security testing.</div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Black Box Technique — Equivalence Partitioning &amp; BVA</h3>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// Black Box: Equivalence Partitioning for age validation</span>
+<span class="cm">// Valid partition: 18-65 | Invalid: &lt;18 | Invalid: &gt;65</span>
+<span class="ann">@Test</span> <span class="kw">void</span> <span class="fn">validateAge_ValidRange_ReturnsTrue</span>() { <span class="fn">assertTrue</span>(validator.<span class="fn">isValidAge</span>(<span class="num">30</span>)); }
+<span class="ann">@Test</span> <span class="kw">void</span> <span class="fn">validateAge_BelowMin_ReturnsFalse</span>() { <span class="fn">assertFalse</span>(validator.<span class="fn">isValidAge</span>(<span class="num">15</span>)); }
+<span class="ann">@Test</span> <span class="kw">void</span> <span class="fn">validateAge_AboveMax_ReturnsFalse</span>() { <span class="fn">assertFalse</span>(validator.<span class="fn">isValidAge</span>(<span class="num">70</span>)); }
+<span class="cm">// Boundary Value Analysis: test 17, 18, 19, 64, 65, 66</span>
+<span class="ann">@Test</span> <span class="kw">void</span> <span class="fn">validateAge_LowerBoundary_ReturnsFalse</span>() { <span class="fn">assertFalse</span>(validator.<span class="fn">isValidAge</span>(<span class="num">17</span>)); }
+<span class="ann">@Test</span> <span class="kw">void</span> <span class="fn">validateAge_LowerBoundary_ReturnsTrue</span>() { <span class="fn">assertTrue</span>(validator.<span class="fn">isValidAge</span>(<span class="num">18</span>)); }</div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION 3: AUTOMATION TESTING                                          -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="automation">
+      <h2 class="section-heading">3. Automation Testing</h2>
+      <p class="section-sub">When and how to automate, framework architectures, ROI, and CI/CD integration.</p>
+
+      <h3 class="sub-heading">What Is Test Automation?</h3>
+      <div class="card-light">
+        <p class="ans-hero"><i class="bi bi-robot me-2"></i>Test automation uses scripts/tools to execute tests, compare results, and report outcomes — <span class="hl green">without human intervention</span>, at machine speed.</p>
+        <div class="compare-grid">
+          <div class="compare-card green">
+            <span class="ans-label key"><i class="bi bi-lightning-charge"></i> Why Automate</span>
+            <ul class="ans-list green mt-2">
+              <li><span class="icon">⚡</span> Regression suite runs in minutes vs days</li>
+              <li><span class="icon">🔁</span> Repeatable on every commit — zero human effort</li>
+              <li><span class="icon">📊</span> Data-driven: same logic, hundreds of inputs</li>
+              <li><span class="icon">🌐</span> Cross-browser matrix would multiply manual effort</li>
+            </ul>
+          </div>
+          <div class="compare-card amber">
+            <span class="ans-label ex"><i class="bi bi-exclamation-triangle"></i> When NOT to Automate</span>
+            <ul class="ans-list amber mt-2">
+              <li><span class="icon">🧭</span> Exploratory testing — needs human curiosity</li>
+              <li><span class="icon">🎨</span> UX/usability — subjective human judgment</li>
+              <li><span class="icon">🚧</span> Rapidly-changing UI — maintenance cost exceeds benefit</li>
+              <li><span class="icon">1️⃣</span> One-time tests — scripting cost &gt; single-run value</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">When to Automate — Decision Checklist</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Test Type</th><th>Automate?</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Repetitive regression tests</td><td>✅ Yes</td><td>Run on every build; huge cumulative time savings</td></tr>
+          <tr><td>Data-driven tests (many inputs)</td><td>✅ Yes</td><td>Same logic, many datasets — ideal for parameterization</td></tr>
+          <tr><td>Smoke / sanity tests</td><td>✅ Yes</td><td>Fast, frequent, gate every deployment</td></tr>
+          <tr><td>Performance / load tests</td><td>✅ Yes</td><td>Impossible to simulate thousands of users manually</td></tr>
+          <tr><td>Cross-browser / cross-platform</td><td>✅ Yes</td><td>Matrix of environments multiplies manual effort</td></tr>
+          <tr><td>Stable, mature features</td><td>✅ Yes</td><td>Low maintenance — UI/logic rarely changes</td></tr>
+          <tr><td>One-time / throwaway tests</td><td>❌ No</td><td>Scripting cost exceeds the benefit of a single run</td></tr>
+          <tr><td>Exploratory testing</td><td>❌ No</td><td>Requires human intuition and curiosity</td></tr>
+          <tr><td>Usability / UX testing</td><td>❌ No</td><td>Subjective human judgment cannot be scripted</td></tr>
+          <tr><td>Rapidly changing / unstable UI</td><td>❌ No</td><td>Scripts break constantly; maintenance cost too high</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Automation ROI Formula</h3>
+      <div class="info-panel" style="border-left:4px solid #6c63ff;">
+        <div class="panel-title"><i class="bi bi-calculator me-2"></i>Break-Even Calculation</div>
+        <p class="ans-hero" style="margin:.5rem 0;"><strong>Break-even runs = Automation build cost ÷ (Manual execution time per run)</strong></p>
+        <ul class="ans-list green">
+          <li><span class="icon">📌</span> Example: 30 min manual × 100 runs/year = <span class="hl green">50 hrs saved/year</span></li>
+          <li><span class="icon">🔨</span> If automation costs 10 hrs to build → <span class="hl blue">break-even at ~20 runs</span></li>
+          <li><span class="icon">💰</span> Year-one net saving = 40 hrs. Savings grow every year thereafter</li>
+        </ul>
+      </div>
+
+      <h3 class="sub-heading">7 Automation Framework Types</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>#</th><th>Framework</th><th>Description</th><th>Best For</th><th>Pros</th><th>Cons</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Linear / Record-Playback</td><td>Sequential scripts recorded by a tool, replayed step by step</td><td>POCs, quick demos</td><td>Fast to create, no coding</td><td>No reuse, fragile, hard to maintain</td></tr>
+          <tr><td>2</td><td>Modular</td><td>Application split into independent modules with separate scripts</td><td>Mid-size apps</td><td>Reusable modules, easier maintenance</td><td>Needs planning; data hardcoded</td></tr>
+          <tr><td>3</td><td>Data-Driven</td><td>Test logic separated from test data (Excel, CSV, DB)</td><td>Many input combinations</td><td>Same script, many datasets</td><td>Setup overhead for data sources</td></tr>
+          <tr><td>4</td><td>Keyword-Driven</td><td>Actions defined as keywords in external tables</td><td>Non-technical teams</td><td>Readable; testers without coding</td><td>Complex initial framework build</td></tr>
+          <tr><td>5</td><td>Hybrid</td><td>Combines data-driven + keyword-driven + modular</td><td>Large enterprise suites</td><td>Flexible, leverages all strengths</td><td>Most complex to design</td></tr>
+          <tr><td>6</td><td>BDD (Cucumber)</td><td>Tests written in Gherkin (Given-When-Then) plain language</td><td>Business collaboration</td><td>Readable by all stakeholders</td><td>Glue code overhead; can be verbose</td></tr>
+          <tr><td>7</td><td>Page Object Model (POM)</td><td>Each page is a class; locators/actions encapsulated</td><td>UI automation (Selenium)</td><td>Low maintenance, high reuse</td><td>More upfront classes to write</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">CI/CD Integration</h3>
+      <p class="ans-hero"><i class="bi bi-arrow-repeat me-2"></i>Automate the pipeline — tests run on every push, providing fast feedback and gating deployments.</p>
+      <ul class="ans-list blue">
+        <li><span class="icon">1️⃣</span> <strong>Commit</strong> — developer pushes code to Git</li>
+        <li><span class="icon">2️⃣</span> <strong>Trigger</strong> — CI server (Jenkins / GitHub Actions / GitLab CI) starts pipeline</li>
+        <li><span class="icon">3️⃣</span> <strong>Build</strong> — compile &amp; package (<code>mvn clean install</code>); fail fast on compile errors</li>
+        <li><span class="icon">4️⃣</span> <strong>Unit Tests</strong> — fast tests run first; failure fails the build immediately</li>
+        <li><span class="icon">5️⃣</span> <strong>Deploy to Test Env</strong> — artifact pushed to staging</li>
+        <li><span class="icon">6️⃣</span> <strong>Automated Suite</strong> — Selenium/TestNG regression + smoke (parallel via Grid)</li>
+        <li><span class="icon">7️⃣</span> <strong>Report</strong> — Allure / Extent / Surefire results &amp; screenshots published as artifacts</li>
+        <li><span class="icon">8️⃣</span> <strong>Gate / Promote</strong> — all pass → promote build; failures → notify team immediately</li>
+      </ul>
+
+      <h4 class="mini-heading">Maven pom.xml — Selenium + TestNG</h4>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">&lt;!-- pom.xml dependencies for Selenium + TestNG --&gt;</span>
+&lt;<span class="cl">dependencies</span>&gt;
+  &lt;<span class="cl">dependency</span>&gt;
+    &lt;<span class="cl">groupId</span>&gt;org.seleniumhq.selenium&lt;/<span class="cl">groupId</span>&gt;
+    &lt;<span class="cl">artifactId</span>&gt;selenium-java&lt;/<span class="cl">artifactId</span>&gt;
+    &lt;<span class="cl">version</span>&gt;<span class="num">4.18.1</span>&lt;/<span class="cl">version</span>&gt;
+  &lt;/<span class="cl">dependency</span>&gt;
+  &lt;<span class="cl">dependency</span>&gt;
+    &lt;<span class="cl">groupId</span>&gt;org.testng&lt;/<span class="cl">groupId</span>&gt;
+    &lt;<span class="cl">artifactId</span>&gt;testng&lt;/<span class="cl">artifactId</span>&gt;
+    &lt;<span class="cl">version</span>&gt;<span class="num">7.9.0</span>&lt;/<span class="cl">version</span>&gt;
+    &lt;<span class="cl">scope</span>&gt;test&lt;/<span class="cl">scope</span>&gt;
+  &lt;/<span class="cl">dependency</span>&gt;
+  &lt;<span class="cl">dependency</span>&gt;
+    &lt;<span class="cl">groupId</span>&gt;io.github.bonigarcia&lt;/<span class="cl">groupId</span>&gt;
+    &lt;<span class="cl">artifactId</span>&gt;webdrivermanager&lt;/<span class="cl">artifactId</span>&gt;
+    &lt;<span class="cl">version</span>&gt;<span class="num">5.7.0</span>&lt;/<span class="cl">version</span>&gt;
+  &lt;/<span class="cl">dependency</span>&gt;
+&lt;/<span class="cl">dependencies</span>&gt;
+&lt;<span class="cl">build</span>&gt;
+  &lt;<span class="cl">plugins</span>&gt;
+    &lt;<span class="cl">plugin</span>&gt;
+      &lt;<span class="cl">groupId</span>&gt;org.apache.maven.plugins&lt;/<span class="cl">groupId</span>&gt;
+      &lt;<span class="cl">artifactId</span>&gt;maven-surefire-plugin&lt;/<span class="cl">artifactId</span>&gt;
+      &lt;<span class="cl">version</span>&gt;<span class="num">3.2.5</span>&lt;/<span class="cl">version</span>&gt;
+      &lt;<span class="cl">configuration</span>&gt;
+        &lt;<span class="cl">suiteXmlFiles</span>&gt;
+          &lt;<span class="cl">suiteXmlFile</span>&gt;testng.xml&lt;/<span class="cl">suiteXmlFile</span>&gt;
+        &lt;/<span class="cl">suiteXmlFiles</span>&gt;
+      &lt;/<span class="cl">configuration</span>&gt;
+    &lt;/<span class="cl">plugin</span>&gt;
+  &lt;/<span class="cl">plugins</span>&gt;
+&lt;/<span class="cl">build</span>&gt;</div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- TOOLS ANCHOR                                                           -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="tools">
+      <h2 class="section-heading">Tools Covered</h2>
+      <p class="section-sub">Deep dives into the three pillars of modern test automation, plus their ecosystem.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <a href="#tosca" class="text-decoration-none">
+            <div class="tool-card">
+              <span class="tool-badge">Codeless</span>
+              <div class="tool-icon">🧩</div>
+              <h5>TOSCA</h5>
+              <p class="text-muted mb-0">Tricentis model-based, scriptless enterprise automation.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#testng" class="text-decoration-none">
+            <div class="tool-card">
+              <span class="tool-badge">Java</span>
+              <div class="tool-icon">🧪</div>
+              <h5>TestNG</h5>
+              <p class="text-muted mb-0">Powerful Java testing framework with parallel execution.</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#selenium" class="text-decoration-none">
+            <div class="tool-card">
+              <span class="tool-badge">Open Source</span>
+              <div class="tool-icon">🌐</div>
+              <h5>Selenium</h5>
+              <p class="text-muted mb-0">The de-facto open-source browser automation framework.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION 4: TOSCA DEEP DIVE                                             -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="tosca">
+      <h2 class="section-heading">4. TOSCA Deep Dive</h2>
+      <p class="section-sub">Tricentis TOSCA — model-based, scriptless, continuous testing for the enterprise.</p>
+
+      <div class="card-light">
+        <p class="ans-hero"><i class="bi bi-puzzle-fill me-2"></i>TOSCA = commercial, <span class="hl purple">model-based</span>, <span class="hl green">scriptless</span> enterprise automation — scan app → create Modules → assemble tests, no coding needed.</p>
+        <div class="compare-grid">
+          <div class="compare-card blue">
+            <span class="ans-label def"><i class="bi bi-star"></i> Key Strengths</span>
+            <ul class="ans-list blue mt-2">
+              <li><span class="icon">🧩</span> Scriptless — business analysts can build automation</li>
+              <li><span class="icon">🏗️</span> Model-based — one Module update fixes all dependent tests</li>
+              <li><span class="icon">🌐</span> Unified: Web + Mobile + Desktop + API from one tool</li>
+              <li><span class="icon">🏢</span> Deep SAP &amp; Salesforce certified support</li>
+              <li><span class="icon">🤖</span> AI self-healing — adapts when UI changes</li>
+            </ul>
+          </div>
+          <div class="compare-card amber">
+            <span class="ans-label ex"><i class="bi bi-info-circle"></i> Key Facts</span>
+            <ul class="ans-list amber mt-2">
+              <li><span class="icon">💰</span> Commercial license — expensive</li>
+              <li><span class="icon">🏭</span> Widely used in regulated industries (banking, pharma)</li>
+              <li><span class="icon">🔒</span> Vendor lock-in to Tricentis ecosystem</li>
+              <li><span class="icon">🧠</span> Low coding barrier — but requires TOSCA expertise</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Philosophy &amp; Architecture</h3>
+      <p class="ans-hero"><i class="bi bi-diagram-3 me-2"></i>Core separation: <span class="hl purple">Modules</span> (app structure) × <span class="hl blue">TestCases</span> (logic) × <span class="hl amber">TestData</span> (values) — change one layer without touching the others.</p>
+      <div class="code-block">TOSCA Workspace/
+├── Requirements/
+├── TestCases/
+│   ├── Regression/
+│   ├── Smoke/
+│   └── UAT/
+├── Modules/
+│   ├── CommonModules/
+│   └── ApplicationPages/
+├── TestData/
+│   └── DataPools/
+├── ExecutionLists/
+│   ├── Nightly/
+│   └── CI_Pipeline/
+└── Reports/</div>
+
+      <h3 class="sub-heading">Key Components</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Component</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Modules</td><td>Abstraction of UI / API components, auto-created by the ScanEngine. Reused across many test cases.</td></tr>
+          <tr><td>TestCases</td><td>Executable tests built from ordered TestSteps that reference Modules.</td></tr>
+          <tr><td>TestStepBlocks</td><td>Reusable logic blocks (e.g., "Login") shared across multiple test cases.</td></tr>
+          <tr><td>Business Parameters</td><td>Cross-case parameter binding so values flow between test cases.</td></tr>
+          <tr><td>ExecutionLists</td><td>Ordered groups of test cases assembled specifically for execution runs.</td></tr>
+          <tr><td>TDM (Test Data Management)</td><td>Parameterized data pools and synthetic test data generation.</td></tr>
+          <tr><td>Risk Coverage Optimizer</td><td>Maps test cases to business risks and prioritizes tests by risk weight.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">How the ScanEngine Works</h3>
+      <ul class="ans-list blue">
+        <li><span class="icon">1️⃣</span> Point ScanEngine at a running screen, dialog, or API endpoint</li>
+        <li><span class="icon">2️⃣</span> TOSCA inspects HTML DOM, controls, and fields</li>
+        <li><span class="icon">3️⃣</span> Tester selects which elements to steer or verify</li>
+        <li><span class="icon">4️⃣</span> TOSCA generates a <strong>Module</strong> with stable identification properties</li>
+        <li><span class="icon">5️⃣</span> Module becomes a reusable building block referenced by any TestCase</li>
+        <li><span class="icon">6️⃣</span> UI changes? Re-scan single Module → all tests inherit the fix automatically</li>
+      </ul>
+
+      <h3 class="sub-heading">Storyboard, API Testing, DEX &amp; AI</h3>
+      <div class="card-grid" style="margin-top:.5rem;">
+        <div class="type-card">
+          <h5><i class="bi bi-images me-2" style="color:#6c63ff;"></i>Storyboard Testing</h5>
+          <ul class="ans-list purple" style="margin-top:.5rem;">
+            <li><span class="icon">🖼️</span> Design tests visually using screenshots</li>
+            <li><span class="icon">🖱️</span> Drag &amp; annotate elements directly on screen image</li>
+            <li><span class="icon">📄</span> Serves as living documentation of the user journey</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <h5><i class="bi bi-cloud-arrow-up me-2" style="color:#2563eb;"></i>API Testing</h5>
+          <ul class="ans-list blue" style="margin-top:.5rem;">
+            <li><span class="icon">🌐</span> Supports REST, SOAP, and GraphQL</li>
+            <li><span class="icon">🔑</span> Auth: Basic, OAuth, tokens — all configurable</li>
+            <li><span class="icon">🔗</span> Mix UI + API steps in same TestCase (true E2E)</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <h5><i class="bi bi-hdd-network me-2" style="color:#059669;"></i>DEX (Distributed Execution)</h5>
+          <ul class="ans-list green" style="margin-top:.5rem;">
+            <li><span class="icon">🤝</span> Central DEX server coordinates multiple AOS Agents</li>
+            <li><span class="icon">⚡</span> Runs test cases in parallel across machines</li>
+            <li><span class="icon">🌍</span> Concurrent cross-browser &amp; cross-environment execution</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <h5><i class="bi bi-cpu me-2" style="color:#d97706;"></i>AI Self-Healing</h5>
+          <ul class="ans-list amber" style="margin-top:.5rem;">
+            <li><span class="icon">🤖</span> Detects when element ID/properties change</li>
+            <li><span class="icon">👁️</span> Uses Vision AI for visual re-identification</li>
+            <li><span class="icon">🩹</span> Keeps suites green without manual locator fixes</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">TOSCA vs Selenium</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Aspect</th><th>TOSCA</th><th>Selenium</th></tr></thead>
+        <tbody>
+          <tr><td>Scripting</td><td>Scriptless / model-based</td><td>Code (Java, Python, C#, JS)</td></tr>
+          <tr><td>Cost</td><td>Commercial license (expensive)</td><td>Free &amp; open source</td></tr>
+          <tr><td>Maintenance</td><td>Low — central Modules + self-healing</td><td>Higher — locators change in code</td></tr>
+          <tr><td>Skill needed</td><td>Low coding; tool expertise</td><td>Strong programming required</td></tr>
+          <tr><td>Browser support</td><td>All major browsers</td><td>All major browsers (W3C WebDriver)</td></tr>
+          <tr><td>API testing</td><td>Built-in (REST/SOAP/GraphQL)</td><td>Needs RestAssured / extra libs</td></tr>
+          <tr><td>CI/CD integration</td><td>Jenkins, Azure DevOps via DEX</td><td>Native — any CI with Maven/Gradle</td></tr>
+          <tr><td>Reporting</td><td>Rich built-in dashboards</td><td>Needs Allure / Extent / TestNG</td></tr>
+          <tr><td>Learning curve</td><td>Moderate (tool concepts)</td><td>Steep (code + framework)</td></tr>
+          <tr><td>Best for</td><td>Enterprise / SAP / Salesforce</td><td>Web apps, dev-heavy teams</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Pros &amp; Cons</h3>
+      <div class="pros-cons">
+        <div class="pros">
+          <h6>Pros</h6>
+          <ul class="mb-0">
+            <li>Scriptless — accessible to non-programmers</li>
+            <li>Low maintenance via reusable Modules + self-healing</li>
+            <li>Unified UI + API + mobile + packaged apps</li>
+            <li>Strong SAP / Salesforce certified support</li>
+            <li>Risk-based test optimization &amp; rich reporting</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h6>Cons</h6>
+          <ul class="mb-0">
+            <li>Expensive commercial license</li>
+            <li>Vendor lock-in to the Tricentis ecosystem</li>
+            <li>Less flexible than code for edge cases</li>
+            <li>Smaller community than open-source tools</li>
+            <li>Heavier install / infrastructure footprint</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION 5: TESTNG DEEP DIVE                                            -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="testng">
+      <h2 class="section-heading">5. TestNG Deep Dive</h2>
+      <p class="section-sub">A powerful, flexible Java testing framework — annotations, data providers, listeners, parallel execution.</p>
+
+      <div class="card-light">
+        <p class="ans-hero"><i class="bi bi-flask me-2"></i>TestNG = Java's most powerful test framework — built-in parallel execution, @DataProvider, groups, dependencies, and XML suite config in one tool.</p>
+        <div class="icon-row">
+          <span class="icon-chip purple"><i class="bi bi-person"></i> By Cédric Beust</span>
+          <span class="icon-chip blue"><i class="bi bi-layers"></i> Annotations-based lifecycle</span>
+          <span class="icon-chip green"><i class="bi bi-table"></i> @DataProvider data-driven</span>
+          <span class="icon-chip amber"><i class="bi bi-tags"></i> Groups &amp; priorities</span>
+          <span class="icon-chip blue"><i class="bi bi-link-45deg"></i> dependsOnMethods</span>
+          <span class="icon-chip green"><i class="bi bi-speedometer2"></i> Built-in parallel execution</span>
+          <span class="icon-chip purple"><i class="bi bi-file-earmark-code"></i> testng.xml suite control</span>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">TestNG vs JUnit 4 vs JUnit 5</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Feature</th><th>JUnit 4</th><th>JUnit 5</th><th>TestNG</th></tr></thead>
+        <tbody>
+          <tr><td>Annotations</td><td>@Before/@After</td><td>@BeforeEach/@AfterEach</td><td>@BeforeMethod/@AfterMethod (richer set)</td></tr>
+          <tr><td>Parallel execution</td><td>Limited (runners)</td><td>Yes (config)</td><td>Yes — built-in, easy via XML</td></tr>
+          <tr><td>Grouping</td><td>@Category</td><td>@Tag</td><td>@Test(groups=...) — native</td></tr>
+          <tr><td>Data provider</td><td>@Parameters (verbose)</td><td>@ParameterizedTest</td><td>@DataProvider (flexible 2D arrays)</td></tr>
+          <tr><td>Listeners</td><td>RunListener</td><td>Extensions</td><td>ITestListener / ISuiteListener</td></tr>
+          <tr><td>Expected exceptions</td><td>@Test(expected=)</td><td>assertThrows</td><td>@Test(expectedExceptions=)</td></tr>
+          <tr><td>Timeouts</td><td>@Test(timeout=)</td><td>assertTimeout</td><td>@Test(timeOut=)</td></tr>
+          <tr><td>Ordering / priority</td><td>None native</td><td>@Order</td><td>@Test(priority=)</td></tr>
+          <tr><td>Dependency</td><td>None</td><td>None native</td><td>dependsOnMethods / dependsOnGroups</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Annotation Execution Order</h3>
+      <p class="ans-hero"><i class="bi bi-arrow-down-circle me-2"></i>TestNG lifecycle flows top-to-bottom on entry, bottom-to-top on exit — wrapping each test in predictable setup/teardown layers.</p>
+      <div class="icon-row" style="flex-direction:column; gap:.3rem;">
+        <span class="icon-chip green" style="width:fit-content;"><i class="bi bi-play-circle"></i> @BeforeSuite → @BeforeTest → @BeforeClass → @BeforeGroups → @BeforeMethod</span>
+        <span class="icon-chip purple" style="width:fit-content; font-size:1rem; font-weight:800;"><i class="bi bi-check2-square"></i> <strong>@Test</strong> ← the actual test executes here</span>
+        <span class="icon-chip amber" style="width:fit-content;"><i class="bi bi-stop-circle"></i> @AfterMethod → @AfterGroups → @AfterClass → @AfterTest → @AfterSuite</span>
+      </div>
+      <div class="code-wrap">
+        <div class="code-block"><span class="ann">@BeforeSuite</span>  <span class="kw">public void</span> <span class="fn">suiteSetup</span>()   { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"1. Before Suite"</span>); }
+<span class="ann">@BeforeTest</span>   <span class="kw">public void</span> <span class="fn">testSetup</span>()    { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"2. Before Test"</span>); }
+<span class="ann">@BeforeClass</span>  <span class="kw">public void</span> <span class="fn">classSetup</span>()   { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"3. Before Class"</span>); }
+<span class="ann">@BeforeMethod</span> <span class="kw">public void</span> <span class="fn">methodSetup</span>()  { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"4. Before Method"</span>); }
+<span class="ann">@Test</span>         <span class="kw">public void</span> <span class="fn">testCaseOne</span>()  { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"5. The Test"</span>); }
+<span class="ann">@AfterMethod</span>  <span class="kw">public void</span> <span class="fn">methodTeardown</span>(){ <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"6. After Method"</span>); }
+<span class="ann">@AfterClass</span>   <span class="kw">public void</span> <span class="fn">classTeardown</span>() { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"7. After Class"</span>); }
+<span class="ann">@AfterTest</span>    <span class="kw">public void</span> <span class="fn">testTeardown</span>()  { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"8. After Test"</span>); }
+<span class="ann">@AfterSuite</span>   <span class="kw">public void</span> <span class="fn">suiteTeardown</span>() { <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"9. After Suite"</span>); }</div>
+      </div>
+
+      <h3 class="sub-heading">All Annotations Reference</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Annotation</th><th>When it Runs</th><th>Common Use</th></tr></thead>
+        <tbody>
+          <tr><td>@BeforeSuite</td><td>Once before all tests in the suite</td><td>Start servers, global config</td></tr>
+          <tr><td>@AfterSuite</td><td>Once after all tests in the suite</td><td>Shut down servers, cleanup</td></tr>
+          <tr><td>@BeforeTest</td><td>Before any class in a &lt;test&gt; tag</td><td>Per-&lt;test&gt; setup (e.g., browser type)</td></tr>
+          <tr><td>@AfterTest</td><td>After all classes in a &lt;test&gt; tag</td><td>Per-&lt;test&gt; teardown</td></tr>
+          <tr><td>@BeforeClass</td><td>Once before the first method of a class</td><td>Initialize the class fixture</td></tr>
+          <tr><td>@AfterClass</td><td>Once after the last method of a class</td><td>Release class resources</td></tr>
+          <tr><td>@BeforeGroups</td><td>Before the first method of a group</td><td>Group-specific setup</td></tr>
+          <tr><td>@AfterGroups</td><td>After the last method of a group</td><td>Group-specific teardown</td></tr>
+          <tr><td>@BeforeMethod</td><td>Before each @Test method</td><td>Open browser, fresh state</td></tr>
+          <tr><td>@AfterMethod</td><td>After each @Test method</td><td>Close browser, screenshot on fail</td></tr>
+          <tr><td>@Test</td><td>The actual test method</td><td>Contains assertions</td></tr>
+          <tr><td>@DataProvider</td><td>Supplies data to a @Test</td><td>Data-driven testing (2D arrays)</td></tr>
+          <tr><td>@Parameters</td><td>Injects values from testng.xml</td><td>Environment/config parameters</td></tr>
+          <tr><td>@Factory</td><td>Creates test instances dynamically</td><td>Run a class with varied constructor data</td></tr>
+          <tr><td>@Listeners</td><td>Class-level — attaches listeners</td><td>Reporting, retry, screenshots</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">@Test Attributes</h3>
+      <div class="code-wrap">
+        <div class="code-block"><span class="ann">@Test</span>(
+    priority = <span class="num">1</span>,
+    groups = { <span class="st">"smoke"</span>, <span class="st">"regression"</span> },
+    dependsOnMethods = { <span class="st">"loginTest"</span> },
+    dataProvider = <span class="st">"loginData"</span>,
+    enabled = <span class="kw">true</span>,
+    timeOut = <span class="num">5000</span>,
+    expectedExceptions = <span class="cl">IllegalArgumentException</span>.<span class="kw">class</span>,
+    description = <span class="st">"Validates the checkout flow"</span>,
+    invocationCount = <span class="num">2</span>
+)
+<span class="kw">public void</span> <span class="fn">checkoutTest</span>(<span class="cl">String</span> user, <span class="cl">String</span> pass, <span class="kw">boolean</span> expected) {
+    <span class="cm">// test body</span>
+}</div>
+      </div>
+
+      <h3 class="sub-heading">@DataProvider — Data-Driven Testing</h3>
+      <p class="ans-hero"><i class="bi bi-table me-2"></i><code>@DataProvider</code> returns a 2D <code>Object[][]</code> — TestNG runs the test <span class="hl green">once per row</span>. Set <code>parallel=true</code> to run all rows concurrently.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="ann">@DataProvider</span>(name = <span class="st">"loginData"</span>, parallel = <span class="kw">true</span>)
+<span class="kw">public</span> <span class="cl">Object</span>[][] <span class="fn">provideLoginData</span>() {
+    <span class="kw">return new</span> <span class="cl">Object</span>[][] {
+        {<span class="st">"validUser"</span>, <span class="st">"validPass123"</span>, <span class="kw">true</span>},
+        {<span class="st">"invalidUser"</span>, <span class="st">"wrongPass"</span>, <span class="kw">false</span>},
+        {<span class="st">""</span>, <span class="st">""</span>, <span class="kw">false</span>},
+        {<span class="st">"validUser"</span>, <span class="st">""</span>, <span class="kw">false</span>}
+    };
+}
+
+<span class="ann">@Test</span>(dataProvider = <span class="st">"loginData"</span>)
+<span class="kw">public void</span> <span class="fn">testLogin</span>(<span class="cl">String</span> username, <span class="cl">String</span> password, <span class="kw">boolean</span> expectedResult) {
+    <span class="kw">boolean</span> result = loginService.<span class="fn">authenticate</span>(username, password);
+    <span class="cl">Assert</span>.<span class="fn">assertEquals</span>(result, expectedResult,
+        <span class="st">"Login result mismatch for user: "</span> + username);
+}</div>
+      </div>
+
+      <h3 class="sub-heading">Listeners</h3>
+      <p class="ans-hero"><i class="bi bi-broadcast me-2"></i>Listeners implement <code>ITestListener</code> to hook test lifecycle events — capture screenshots on failure, enrich reports, and add custom logging without modifying test code.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="kw">public class</span> <span class="cl">TestListener</span> <span class="kw">implements</span> <span class="cl">ITestListener</span> {
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">onTestFailure</span>(<span class="cl">ITestResult</span> result) {
+        <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"FAILED: "</span> + result.<span class="fn">getName</span>());
+        <span class="cm">// Take screenshot</span>
+        <span class="cl">TakesScreenshot</span> ts = (<span class="cl">TakesScreenshot</span>) <span class="cl">DriverManager</span>.<span class="fn">getDriver</span>();
+        <span class="cl">File</span> src = ts.<span class="fn">getScreenshotAs</span>(<span class="cl">OutputType</span>.FILE);
+        <span class="kw">try</span> {
+            <span class="cl">FileUtils</span>.<span class="fn">copyFile</span>(src, <span class="kw">new</span> <span class="cl">File</span>(<span class="st">"screenshots/"</span> + result.<span class="fn">getName</span>() + <span class="st">".png"</span>));
+        } <span class="kw">catch</span> (<span class="cl">IOException</span> e) {
+            e.<span class="fn">printStackTrace</span>();
+        }
+    }
+    <span class="ann">@Override</span>
+    <span class="kw">public void</span> <span class="fn">onTestSuccess</span>(<span class="cl">ITestResult</span> result) {
+        <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"PASSED: "</span> + result.<span class="fn">getName</span>());
+    }
+}</div>
+      </div>
+
+      <h3 class="sub-heading">Soft Assertions</h3>
+      <p class="ans-hero"><i class="bi bi-collection me-2"></i><code>SoftAssert</code> collects ALL failures and reports them together at <code>assertAll()</code> — validate multiple conditions in one test without stopping at the first failure.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="ann">@Test</span>
+<span class="kw">public void</span> <span class="fn">verifyProfilePage</span>() {
+    <span class="cl">SoftAssert</span> softAssert = <span class="kw">new</span> <span class="cl">SoftAssert</span>();
+    softAssert.<span class="fn">assertEquals</span>(profile.<span class="fn">getName</span>(), <span class="st">"John Doe"</span>, <span class="st">"Name mismatch"</span>);
+    softAssert.<span class="fn">assertEquals</span>(profile.<span class="fn">getEmail</span>(), <span class="st">"john@test.com"</span>, <span class="st">"Email mismatch"</span>);
+    softAssert.<span class="fn">assertTrue</span>(profile.<span class="fn">isActive</span>(), <span class="st">"User should be active"</span>);
+    <span class="cm">// All collected failures reported here:</span>
+    softAssert.<span class="fn">assertAll</span>();
+}</div>
+      </div>
+
+      <h3 class="sub-heading">IRetryAnalyzer — Auto-Retry Flaky Tests</h3>
+      <p class="ans-hero"><i class="bi bi-arrow-clockwise me-2"></i>Implement <code>IRetryAnalyzer</code> to automatically re-run a failing test up to N times before marking it failed — use sparingly, fix root causes instead.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="kw">public class</span> <span class="cl">RetryAnalyzer</span> <span class="kw">implements</span> <span class="cl">IRetryAnalyzer</span> {
+    <span class="kw">private int</span> count = <span class="num">0</span>;
+    <span class="kw">private static final int</span> MAX_RETRY = <span class="num">2</span>;
+
+    <span class="ann">@Override</span>
+    <span class="kw">public boolean</span> <span class="fn">retry</span>(<span class="cl">ITestResult</span> result) {
+        <span class="kw">if</span> (count &lt; MAX_RETRY) {
+            count++;
+            <span class="cl">System</span>.out.<span class="fn">println</span>(<span class="st">"Retrying test: "</span> + result.<span class="fn">getName</span>() + <span class="st">" attempt "</span> + count);
+            <span class="kw">return true</span>;
+        }
+        <span class="kw">return false</span>;
+    }
+}</div>
+      </div>
+
+      <h3 class="sub-heading">testng.xml — Parallel Suite</h3>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">&lt;!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd"&gt;</span>
+&lt;<span class="cl">suite</span> name=<span class="st">"Full Regression Suite"</span> parallel=<span class="st">"methods"</span> thread-count=<span class="st">"4"</span> verbose=<span class="st">"1"</span>&gt;
+  &lt;<span class="cl">listeners</span>&gt;
+    &lt;<span class="cl">listener</span> class-name=<span class="st">"listeners.TestListener"</span>/&gt;
+    &lt;<span class="cl">listener</span> class-name=<span class="st">"listeners.RetryListener"</span>/&gt;
+  &lt;/<span class="cl">listeners</span>&gt;
+  &lt;<span class="cl">test</span> name=<span class="st">"Smoke Tests"</span>&gt;
+    &lt;<span class="cl">groups</span>&gt;
+      &lt;<span class="cl">run</span>&gt;&lt;<span class="cl">include</span> name=<span class="st">"smoke"</span>/&gt;&lt;/<span class="cl">run</span>&gt;
+    &lt;/<span class="cl">groups</span>&gt;
+    &lt;<span class="cl">classes</span>&gt;
+      &lt;<span class="cl">class</span> name=<span class="st">"tests.LoginTest"</span>/&gt;
+      &lt;<span class="cl">class</span> name=<span class="st">"tests.HomeTest"</span>/&gt;
+    &lt;/<span class="cl">classes</span>&gt;
+  &lt;/<span class="cl">test</span>&gt;
+  &lt;<span class="cl">test</span> name=<span class="st">"Regression Tests"</span>&gt;
+    &lt;<span class="cl">classes</span>&gt;
+      &lt;<span class="cl">class</span> name=<span class="st">"tests.CheckoutTest"</span>/&gt;
+      &lt;<span class="cl">class</span> name=<span class="st">"tests.SearchTest"</span>/&gt;
+    &lt;/<span class="cl">classes</span>&gt;
+  &lt;/<span class="cl">test</span>&gt;
+&lt;/<span class="cl">suite</span>&gt;</div>
+      </div>
+    </section>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION 6: SELENIUM DEEP DIVE                                          -->
+    <!-- ====================================================================== -->
+    <section class="content-section" id="selenium">
+      <h2 class="section-heading">6. Selenium Deep Dive</h2>
+      <p class="section-sub">The world's most popular open-source browser automation framework — locators, waits, POM, and beyond.</p>
+
+      <div class="card-light">
+        <p class="ans-hero"><i class="bi bi-globe2 me-2"></i>Selenium = de-facto open-source web automation standard — <span class="hl green">free</span>, <span class="hl blue">multi-language</span>, <span class="hl purple">all major browsers</span>, W3C compliant since v4.</p>
+        <div class="compare-grid">
+          <div class="compare-card blue">
+            <span class="ans-label def"><i class="bi bi-info-circle"></i> Key Facts</span>
+            <ul class="ans-list blue mt-2">
+              <li><span class="icon">📅</span> Created 2004 by Jason Huggins at ThoughtWorks</li>
+              <li><span class="icon">🌐</span> Languages: Java, Python, C#, JS, Ruby</li>
+              <li><span class="icon">📜</span> Selenium 4 = W3C WebDriver standard (no JSON Wire Protocol)</li>
+              <li><span class="icon">🆓</span> 100% free &amp; open-source</li>
+            </ul>
+          </div>
+          <div class="compare-card green">
+            <span class="ans-label key"><i class="bi bi-stars"></i> Selenium 4 New Features</span>
+            <ul class="ans-list green mt-2">
+              <li><span class="icon">📍</span> Relative locators (above, below, near, toLeftOf)</li>
+              <li><span class="icon">🔧</span> Chrome DevTools Protocol (CDP) native access</li>
+              <li><span class="icon">🪟</span> newWindow(WindowType.TAB/WINDOW)</li>
+              <li><span class="icon">📸</span> Element-level screenshots</li>
+              <li><span class="icon">🔀</span> Revamped unified Grid 4</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">The Selenium Suite</h3>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="tool-card"><div class="tool-icon">🤖</div><h5>WebDriver</h5><p class="text-muted mb-0">The core API that drives browsers programmatically using native browser automation support.</p></div>
+        </div>
+        <div class="col-md-4">
+          <div class="tool-card"><div class="tool-icon">⏺️</div><h5>IDE</h5><p class="text-muted mb-0">A browser extension for record-and-playback — great for quick prototyping and learning.</p></div>
+        </div>
+        <div class="col-md-4">
+          <div class="tool-card"><div class="tool-icon">🔀</div><h5>Grid</h5><p class="text-muted mb-0">Distributes tests across multiple machines and browsers in parallel via a hub-node model.</p></div>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">Selenium 4 vs Selenium 3</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Aspect</th><th>Selenium 3</th><th>Selenium 4</th></tr></thead>
+        <tbody>
+          <tr><td>Protocol</td><td>JSON Wire Protocol</td><td>W3C WebDriver standard</td></tr>
+          <tr><td>Grid</td><td>Hub + Node (manual)</td><td>Revamped — standalone/hub-node/distributed, Docker, UI</td></tr>
+          <tr><td>Relative locators</td><td>Not available</td><td>above(), below(), toLeftOf(), toRightOf(), near()</td></tr>
+          <tr><td>DevTools / CDP</td><td>Not supported</td><td>Native Chrome DevTools Protocol access</td></tr>
+          <tr><td>Window/Tab</td><td>Limited</td><td>newWindow(WindowType.TAB/WINDOW)</td></tr>
+          <tr><td>Waits API</td><td>Uses long/TimeUnit</td><td>Uses Duration objects</td></tr>
+          <tr><td>Capabilities</td><td>DesiredCapabilities</td><td>Browser-specific Options classes</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Browser Setup (Selenium 4)</h3>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// Selenium 4 — ChromeDriver setup (WebDriverManager)</span>
+<span class="cl">ChromeOptions</span> options = <span class="kw">new</span> <span class="cl">ChromeOptions</span>();
+options.<span class="fn">addArguments</span>(<span class="st">"--headless=new"</span>); <span class="cm">// headless mode</span>
+options.<span class="fn">addArguments</span>(<span class="st">"--no-sandbox"</span>);
+options.<span class="fn">addArguments</span>(<span class="st">"--disable-dev-shm-usage"</span>);
+options.<span class="fn">addArguments</span>(<span class="st">"--window-size=1920,1080"</span>);
+<span class="cm">// Disable notifications</span>
+options.<span class="fn">addArguments</span>(<span class="st">"--disable-notifications"</span>);
+
+<span class="cl">WebDriverManager</span>.<span class="fn">chromedriver</span>().<span class="fn">setup</span>();
+<span class="cl">WebDriver</span> driver = <span class="kw">new</span> <span class="cl">ChromeDriver</span>(options);
+driver.<span class="fn">manage</span>().<span class="fn">window</span>().<span class="fn">maximize</span>();
+driver.<span class="fn">manage</span>().<span class="fn">timeouts</span>().<span class="fn">implicitlyWait</span>(<span class="cl">Duration</span>.<span class="fn">ofSeconds</span>(<span class="num">5</span>));
+driver.<span class="fn">manage</span>().<span class="fn">timeouts</span>().<span class="fn">pageLoadTimeout</span>(<span class="cl">Duration</span>.<span class="fn">ofSeconds</span>(<span class="num">30</span>));</div>
+      </div>
+
+      <h3 class="sub-heading">Locator Strategies</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Locator</th><th>Example</th><th>When to Use</th></tr></thead>
+        <tbody>
+          <tr><td>id</td><td>By.id("username")</td><td>Best choice — fast &amp; unique when available</td></tr>
+          <tr><td>name</td><td>By.name("email")</td><td>Form fields with a name attribute</td></tr>
+          <tr><td>className</td><td>By.className("error-message")</td><td>Single class name (no spaces)</td></tr>
+          <tr><td>tagName</td><td>By.tagName("a")</td><td>Grabbing all elements of a tag (e.g., links)</td></tr>
+          <tr><td>linkText</td><td>By.linkText("Sign Out")</td><td>Anchor with exact visible text</td></tr>
+          <tr><td>partialLinkText</td><td>By.partialLinkText("Sign")</td><td>Anchor with partial visible text</td></tr>
+          <tr><td>cssSelector</td><td>By.cssSelector("input[type='submit']")</td><td>Fast, flexible — preferred for complex matching</td></tr>
+          <tr><td>xpath</td><td>By.xpath("//div[@class='card']//button")</td><td>Most powerful — traversal, text(), axes</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">XPath Types &amp; Axes</h3>
+      <div class="compare-grid" style="margin-bottom:.5rem;">
+        <div class="compare-card red">
+          <span class="ans-label tip"><i class="bi bi-x-circle"></i> Absolute XPath — Avoid</span>
+          <ul class="ans-list red mt-2">
+            <li><span class="icon">🚫</span> Starts from <code>/html/body/div/...</code> — full path</li>
+            <li><span class="icon">💥</span> Breaks on any structural DOM change</li>
+          </ul>
+        </div>
+        <div class="compare-card green">
+          <span class="ans-label key"><i class="bi bi-check-circle"></i> Relative XPath — Preferred</span>
+          <ul class="ans-list green mt-2">
+            <li><span class="icon">✅</span> Starts anywhere: <code>//tag[@attr='value']</code></li>
+            <li><span class="icon">💪</span> Resilient — not tied to exact DOM depth</li>
+          </ul>
+        </div>
+      </div>
+      <span class="ans-label def"><i class="bi bi-diagram-2"></i> XPath Axes</span>
+      <div class="icon-row">
+        <span class="icon-chip blue">ancestor</span>
+        <span class="icon-chip blue">descendant</span>
+        <span class="icon-chip blue">parent</span>
+        <span class="icon-chip blue">child</span>
+        <span class="icon-chip green">following-sibling</span>
+        <span class="icon-chip green">preceding-sibling</span>
+        <span class="icon-chip purple">following</span>
+        <span class="icon-chip purple">preceding</span>
+        <span class="icon-chip amber">self</span>
+        <span class="icon-chip amber">attribute</span>
+      </div>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// Absolute (fragile) vs Relative (robust)</span>
+/html/body/div[<span class="num">2</span>]/form/input    <span class="cm">// absolute — avoid</span>
+//input[@id=<span class="st">'username'</span>]            <span class="cm">// relative — preferred</span>
+
+<span class="cm">// Text and contains</span>
+//button[text()=<span class="st">'Submit'</span>]
+//a[contains(@href, <span class="st">'logout'</span>)]
+//span[starts-with(@class, <span class="st">'badge'</span>)]
+
+<span class="cm">// Axes examples</span>
+//label[@for=<span class="st">'email'</span>]/following-sibling::input
+//td[text()=<span class="st">'John'</span>]/parent::tr
+//div[@id=<span class="st">'menu'</span>]/descendant::a
+//h2/ancestor::section</div>
+      </div>
+
+      <h3 class="sub-heading">Wait Strategies</h3>
+      <table class="table-light-custom">
+        <thead><tr><th>Wait Type</th><th>Scope</th><th>Behavior</th></tr></thead>
+        <tbody>
+          <tr><td>Implicit Wait</td><td>Global (all elements)</td><td>Polls for a set time before throwing NoSuchElement</td></tr>
+          <tr><td>Explicit Wait</td><td>Specific element/condition</td><td>Waits until an ExpectedCondition is met</td></tr>
+          <tr><td>Fluent Wait</td><td>Specific element/condition</td><td>Explicit + custom polling interval + ignored exceptions</td></tr>
+        </tbody>
+      </table>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// 1. Implicit Wait — global, set once</span>
+driver.<span class="fn">manage</span>().<span class="fn">timeouts</span>().<span class="fn">implicitlyWait</span>(<span class="cl">Duration</span>.<span class="fn">ofSeconds</span>(<span class="num">10</span>));
+
+<span class="cm">// 2. Explicit Wait — WebDriverWait + ExpectedConditions</span>
+<span class="cl">WebDriverWait</span> wait = <span class="kw">new</span> <span class="cl">WebDriverWait</span>(driver, <span class="cl">Duration</span>.<span class="fn">ofSeconds</span>(<span class="num">10</span>));
+<span class="cl">WebElement</span> el = wait.<span class="fn">until</span>(<span class="cl">ExpectedConditions</span>.<span class="fn">visibilityOfElementLocated</span>(<span class="cl">By</span>.<span class="fn">id</span>(<span class="st">"result"</span>)));
+
+<span class="cm">// 3. Fluent Wait — custom polling + ignored exceptions</span>
+<span class="cl">Wait</span>&lt;<span class="cl">WebDriver</span>&gt; fluentWait = <span class="kw">new</span> <span class="cl">FluentWait</span>&lt;&gt;(driver)
+    .<span class="fn">withTimeout</span>(<span class="cl">Duration</span>.<span class="fn">ofSeconds</span>(<span class="num">15</span>))
+    .<span class="fn">pollingEvery</span>(<span class="cl">Duration</span>.<span class="fn">ofMillis</span>(<span class="num">500</span>))
+    .<span class="fn">ignoring</span>(<span class="cl">NoSuchElementException</span>.<span class="kw">class</span>);
+<span class="cl">WebElement</span> dynamic = fluentWait.<span class="fn">until</span>(d -> d.<span class="fn">findElement</span>(<span class="cl">By</span>.<span class="fn">id</span>(<span class="st">"async"</span>)));</div>
+      </div>
+
+      <h3 class="sub-heading">Handling Special Elements</h3>
+      <h4 class="mini-heading">1. Dropdowns (Select class)</h4>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cl">Select</span> dropdown = <span class="kw">new</span> <span class="cl">Select</span>(driver.<span class="fn">findElement</span>(<span class="cl">By</span>.<span class="fn">id</span>(<span class="st">"country"</span>)));
+dropdown.<span class="fn">selectByVisibleText</span>(<span class="st">"United States"</span>);
+dropdown.<span class="fn">selectByValue</span>(<span class="st">"US"</span>);
+dropdown.<span class="fn">selectByIndex</span>(<span class="num">0</span>);
+<span class="cm">// Multi-select</span>
+dropdown.<span class="fn">selectByVisibleText</span>(<span class="st">"Option 1"</span>);
+dropdown.<span class="fn">selectByVisibleText</span>(<span class="st">"Option 2"</span>);
+<span class="cl">List</span>&lt;<span class="cl">WebElement</span>&gt; selected = dropdown.<span class="fn">getAllSelectedOptions</span>();</div>
+      </div>
+
+      <h4 class="mini-heading">2. Alerts</h4>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cl">Alert</span> alert = driver.<span class="fn">switchTo</span>().<span class="fn">alert</span>();
+<span class="cl">String</span> alertText = alert.<span class="fn">getText</span>();
+alert.<span class="fn">accept</span>();   <span class="cm">// click OK</span>
+alert.<span class="fn">dismiss</span>();  <span class="cm">// click Cancel</span>
+alert.<span class="fn">sendKeys</span>(<span class="st">"text input"</span>); <span class="cm">// for prompt</span></div>
+      </div>
+
+      <h4 class="mini-heading">3. iFrames</h4>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// Switch to iFrame by id/name</span>
+driver.<span class="fn">switchTo</span>().<span class="fn">frame</span>(<span class="st">"iframeId"</span>);
+<span class="cm">// Switch by index</span>
+driver.<span class="fn">switchTo</span>().<span class="fn">frame</span>(<span class="num">0</span>);
+<span class="cm">// Switch by WebElement</span>
+<span class="cl">WebElement</span> iFrame = driver.<span class="fn">findElement</span>(<span class="cl">By</span>.<span class="fn">tagName</span>(<span class="st">"iframe"</span>));
+driver.<span class="fn">switchTo</span>().<span class="fn">frame</span>(iFrame);
+<span class="cm">// Go back to main content</span>
+driver.<span class="fn">switchTo</span>().<span class="fn">defaultContent</span>();</div>
+      </div>
+
+      <h4 class="mini-heading">4. Multiple Windows</h4>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cl">String</span> mainWindow = driver.<span class="fn">getWindowHandle</span>();
+<span class="cl">Set</span>&lt;<span class="cl">String</span>&gt; allWindows = driver.<span class="fn">getWindowHandles</span>();
+<span class="kw">for</span> (<span class="cl">String</span> window : allWindows) {
+    <span class="kw">if</span> (!window.<span class="fn">equals</span>(mainWindow)) {
+        driver.<span class="fn">switchTo</span>().<span class="fn">window</span>(window);
+        <span class="cm">// perform actions</span>
+        driver.<span class="fn">close</span>();
+    }
+}
+driver.<span class="fn">switchTo</span>().<span class="fn">window</span>(mainWindow);</div>
+      </div>
+
+      <h3 class="sub-heading">Page Object Model (POM)</h3>
+      <p class="ans-hero"><i class="bi bi-layout-text-sidebar-reverse me-2"></i>POM = one class per page, encapsulating locators + actions — tests stay clean, and UI changes are <span class="hl green">one-place fixes</span>.</p>
+      <ul class="ans-list blue" style="margin-bottom:.6rem;">
+        <li><span class="icon">📦</span> Each page → its own Java class with <code>@FindBy</code> annotated fields</li>
+        <li><span class="icon">🏭</span> <code>PageFactory.initElements()</code> lazily initializes elements on first use</li>
+        <li><span class="icon">🔗</span> Actions return the next page object — enables fluent test chaining</li>
+        <li><span class="icon">🧹</span> Tests contain no locators — only readable method calls</li>
+      </ul>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// BasePage.java</span>
+<span class="kw">public abstract class</span> <span class="cl">BasePage</span> {
+    <span class="kw">protected</span> <span class="cl">WebDriver</span> driver;
+    <span class="kw">protected</span> <span class="cl">WebDriverWait</span> wait;
+
+    <span class="kw">public</span> <span class="fn">BasePage</span>(<span class="cl">WebDriver</span> driver) {
+        <span class="kw">this</span>.driver = driver;
+        <span class="kw">this</span>.wait = <span class="kw">new</span> <span class="cl">WebDriverWait</span>(driver, <span class="cl">Duration</span>.<span class="fn">ofSeconds</span>(<span class="num">10</span>));
+        <span class="cl">PageFactory</span>.<span class="fn">initElements</span>(driver, <span class="kw">this</span>);
+    }
+
+    <span class="kw">protected</span> <span class="cl">WebElement</span> <span class="fn">waitForClickable</span>(<span class="cl">WebElement</span> element) {
+        <span class="kw">return</span> wait.<span class="fn">until</span>(<span class="cl">ExpectedConditions</span>.<span class="fn">elementToBeClickable</span>(element));
+    }
+
+    <span class="kw">protected void</span> <span class="fn">type</span>(<span class="cl">WebElement</span> element, <span class="cl">String</span> text) {
+        <span class="fn">waitForClickable</span>(element).<span class="fn">clear</span>();
+        element.<span class="fn">sendKeys</span>(text);
+    }
+
+    <span class="kw">protected void</span> <span class="fn">click</span>(<span class="cl">WebElement</span> element) {
+        <span class="fn">waitForClickable</span>(element).<span class="fn">click</span>();
+    }
+}
+
+<span class="cm">// LoginPage.java</span>
+<span class="kw">public class</span> <span class="cl">LoginPage</span> <span class="kw">extends</span> <span class="cl">BasePage</span> {
+    <span class="ann">@FindBy</span>(id = <span class="st">"username"</span>) <span class="kw">private</span> <span class="cl">WebElement</span> usernameField;
+    <span class="ann">@FindBy</span>(id = <span class="st">"password"</span>) <span class="kw">private</span> <span class="cl">WebElement</span> passwordField;
+    <span class="ann">@FindBy</span>(css = <span class="st">"button[type='submit']"</span>) <span class="kw">private</span> <span class="cl">WebElement</span> loginButton;
+    <span class="ann">@FindBy</span>(className = <span class="st">"error-message"</span>) <span class="kw">private</span> <span class="cl">WebElement</span> errorMessage;
+
+    <span class="kw">public</span> <span class="fn">LoginPage</span>(<span class="cl">WebDriver</span> driver) { <span class="kw">super</span>(driver); }
+
+    <span class="kw">public</span> <span class="cl">DashboardPage</span> <span class="fn">loginAs</span>(<span class="cl">String</span> username, <span class="cl">String</span> password) {
+        <span class="fn">type</span>(usernameField, username);
+        <span class="fn">type</span>(passwordField, password);
+        <span class="fn">click</span>(loginButton);
+        <span class="kw">return new</span> <span class="cl">DashboardPage</span>(driver);
+    }
+
+    <span class="kw">public boolean</span> <span class="fn">isErrorDisplayed</span>() {
+        <span class="kw">return</span> errorMessage.<span class="fn">isDisplayed</span>();
+    }
+}
+
+<span class="cm">// LoginTest.java</span>
+<span class="kw">public class</span> <span class="cl">LoginTest</span> <span class="kw">extends</span> <span class="cl">BaseTest</span> {
+    <span class="ann">@Test</span>
+    <span class="kw">public void</span> <span class="fn">validLogin_RedirectsToDashboard</span>() {
+        <span class="cl">DashboardPage</span> dashboard = <span class="kw">new</span> <span class="cl">LoginPage</span>(driver)
+            .<span class="fn">loginAs</span>(<span class="st">"admin"</span>, <span class="st">"admin123"</span>);
+        <span class="fn">assertTrue</span>(dashboard.<span class="fn">isWelcomeMessageDisplayed</span>());
+    }
+}</div>
+      </div>
+
+      <h3 class="sub-heading">Actions Class (Keyboard &amp; Mouse)</h3>
+      <p class="ans-hero"><i class="bi bi-mouse2 me-2"></i>The <code>Actions</code> class chains complex interactions — hover, right-click, drag-and-drop, keyboard combos — all executed with <code>.perform()</code>.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cl">Actions</span> actions = <span class="kw">new</span> <span class="cl">Actions</span>(driver);
+<span class="cm">// Hover over a menu</span>
+actions.<span class="fn">moveToElement</span>(menu).<span class="fn">perform</span>();
+<span class="cm">// Right-click (context menu)</span>
+actions.<span class="fn">contextClick</span>(element).<span class="fn">perform</span>();
+<span class="cm">// Double-click</span>
+actions.<span class="fn">doubleClick</span>(element).<span class="fn">perform</span>();
+<span class="cm">// Drag and drop</span>
+actions.<span class="fn">dragAndDrop</span>(source, target).<span class="fn">perform</span>();
+<span class="cm">// Keyboard combo (Ctrl + A)</span>
+actions.<span class="fn">keyDown</span>(<span class="cl">Keys</span>.CONTROL).<span class="fn">sendKeys</span>(<span class="st">"a"</span>).<span class="fn">keyUp</span>(<span class="cl">Keys</span>.CONTROL).<span class="fn">perform</span>();</div>
+      </div>
+
+      <h3 class="sub-heading">JavascriptExecutor</h3>
+      <p class="ans-hero"><i class="bi bi-code-slash me-2"></i>Use <code>JavascriptExecutor</code> when Selenium's native API can't interact — click via JS, scroll, set values, read DOM properties.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cl">JavascriptExecutor</span> js = (<span class="cl">JavascriptExecutor</span>) driver;
+<span class="cm">// Click via JS (when normal click fails)</span>
+js.<span class="fn">executeScript</span>(<span class="st">"arguments[0].click();"</span>, element);
+<span class="cm">// Scroll element into view</span>
+js.<span class="fn">executeScript</span>(<span class="st">"arguments[0].scrollIntoView(true);"</span>, element);
+<span class="cm">// Scroll to bottom of page</span>
+js.<span class="fn">executeScript</span>(<span class="st">"window.scrollTo(0, document.body.scrollHeight);"</span>);
+<span class="cm">// Set value directly</span>
+js.<span class="fn">executeScript</span>(<span class="st">"arguments[0].value='hello';"</span>, inputField);
+<span class="cm">// Get page title</span>
+<span class="cl">String</span> title = (<span class="cl">String</span>) js.<span class="fn">executeScript</span>(<span class="st">"return document.title;"</span>);</div>
+      </div>
+
+      <h3 class="sub-heading">Screenshot Utility</h3>
+      <p class="ans-hero"><i class="bi bi-camera me-2"></i>Capture screenshots on test failure using <code>TakesScreenshot</code> — best called from a TestNG <code>@AfterMethod</code> or Listener's <code>onTestFailure()</code>.</p>
+      <div class="code-wrap">
+        <div class="code-block"><span class="kw">public static</span> <span class="cl">String</span> <span class="fn">captureScreenshot</span>(<span class="cl">WebDriver</span> driver, <span class="cl">String</span> name) <span class="kw">throws</span> <span class="cl">IOException</span> {
+    <span class="cl">TakesScreenshot</span> ts = (<span class="cl">TakesScreenshot</span>) driver;
+    <span class="cl">File</span> src = ts.<span class="fn">getScreenshotAs</span>(<span class="cl">OutputType</span>.FILE);
+    <span class="cl">String</span> path = <span class="st">"screenshots/"</span> + name + <span class="st">"_"</span> + <span class="cl">System</span>.<span class="fn">currentTimeMillis</span>() + <span class="st">".png"</span>;
+    <span class="cl">FileUtils</span>.<span class="fn">copyFile</span>(src, <span class="kw">new</span> <span class="cl">File</span>(path));
+    <span class="kw">return</span> path;
+}</div>
+      </div>
+
+      <h3 class="sub-heading">Selenium Grid &amp; RemoteWebDriver</h3>
+      <p class="ans-hero"><i class="bi bi-hdd-network me-2"></i>Grid distributes tests across machines/browsers in parallel — connect via <code>RemoteWebDriver</code>, hub routes to the matching node.</p>
+      <ul class="ans-list green" style="margin-bottom:.6rem;">
+        <li><span class="icon">🔀</span> Hub-node (Selenium 3) or unified/distributed (Selenium 4)</li>
+        <li><span class="icon">📡</span> Tests point to <code>http://hub:4444/wd/hub</code> — nothing else changes</li>
+        <li><span class="icon">🐳</span> Docker Compose with Selenium Grid 4 containers = easiest setup</li>
+        <li><span class="icon">⚡</span> Combine with TestNG <code>parallel="methods"</code> for maximum speed</li>
+      </ul>
+      <div class="code-wrap">
+        <div class="code-block"><span class="cm">// Connect to a remote Grid hub</span>
+<span class="cl">ChromeOptions</span> options = <span class="kw">new</span> <span class="cl">ChromeOptions</span>();
+options.<span class="fn">setBrowserVersion</span>(<span class="st">"latest"</span>);
+options.<span class="fn">setPlatformName</span>(<span class="st">"Linux"</span>);
+
+<span class="cl">WebDriver</span> driver = <span class="kw">new</span> <span class="cl">RemoteWebDriver</span>(
+    <span class="kw">new</span> <span class="cl">URL</span>(<span class="st">"http://localhost:4444/wd/hub"</span>),
+    options
+);
+driver.<span class="fn">get</span>(<span class="st">"https://example.com"</span>);
+<span class="cl">System</span>.out.<span class="fn">println</span>(driver.<span class="fn">getTitle</span>());
+driver.<span class="fn">quit</span>();</div>
+      </div>
+
+      <div class="info-panel tip">
+        <div class="panel-title">Best Practice</div>
+        Combine <strong>POM + TestNG DataProvider + Selenium Grid</strong> for a clean, scalable, data-driven, parallel automation suite — then wire it into CI/CD for continuous quality.
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="footer-brand">Testing Mastery Hub — Complete QA Reference</div>
+    <p class="mb-2">Concepts &bull; Tools &bull; Interview Q&amp;A &bull; Coding Challenges</p>
+    <div>
+      <a href="questions.html">Interview Q&amp;A</a>
+      <a href="coding.html">Coding Challenges</a>
+    </div>
+    <p class="mt-3 mb-0" style="opacity:.7;">&copy; 2026 Testing Mastery Hub. Built for QA Engineers.</p>
+  </footer>
+
+  <!-- ============================== SCROLL TO TOP ============================== -->
+  <button id="scrollTop" class="scroll-top scroll-top-btn" aria-label="Scroll to top">&uarr;</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
